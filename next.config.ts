@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const baseUrl = 'https://alkatraz131.github.io';
-const link = `${baseUrl}/shadow-portfolio`;
+const link = `/shadow-portfolio`;
 
 
 
