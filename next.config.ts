@@ -1,13 +1,13 @@
 import type { NextConfig } from "next";
 
-const baseUrl = 'https://alkatraz131.github.io';
 const link = `/shadow-portfolio`;
 
-
+const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: link
+  basePath: isProd ? "/shadow-portfolio" : ""
+
 };
 
 export default nextConfig;
