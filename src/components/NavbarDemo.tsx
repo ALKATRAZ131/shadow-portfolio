@@ -1,72 +1,68 @@
 "use client";
+import { useIdentity } from "@/hooks/useIdentity";
 import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "./navbar-menu";
-import { cn } from "@/lib/utils";
-// import { HoveredLink } from "./navbar-menu";
+import { FaSun, FaMoon, FaHome, FaProjectDiagram, FaBlog, FaEnvelope, FaArrowRight } from "react-icons/fa";
+import colors from "@/constants/color";
 
-export function NavbarDemo() {
-  return (
-    <div className="relative w-full flex items-center justify-center">
-      <Navbar className="top-2" />
-      <p className="text-black dark:text-white">
-        The Navbar will show on top of the page
-      </p>
-    </div>
-  );
-}
 
 function Navbar({ className }: { className?: string }) {
-  const [active, setActive] = useState<string | null>(null);
+  const [darkMode, setDarkMode] = useState(false);
+  const { user } = useIdentity();
+  const name = user?.name || "Guest";
+
   return (
-    <div
-      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
+    <nav
+      className={`w-[85%] mx-auto mt-8 flex items-center justify-between bg-black border-1 border-[#362f2f] rounded-full px-8 py-3 shadow-lg ${className || ""}`}
+      style={{ borderRadius: "999px" }}
     >
-      <Menu setActive={setActive}>
-        <MenuItem setActive={setActive} active={active} item="Services">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Web Development</HoveredLink>
-            <HoveredLink href="/interface-design">Interface Design</HoveredLink>
-            <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-            <HoveredLink href="/branding">Branding</HoveredLink>
-          </div>
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Products">
-          <div className="  text-sm grid grid-cols-2 gap-10 p-4">
-            <ProductItem
-              title="Algochurn"
-              href="https://algochurn.com"
-              src="https://assets.aceternity.com/demos/algochurn.webp"
-              description="Prepare for tech interviews like never before."
+      {/* Left: Name */}
+      <div className="text-white text-xl font-bold tracking-wide select-none">
+        {name}
+      </div>
+      {/* Right: Nav links, toggle, button */}
+      <div className="flex items-center gap-16">
+        <a href="#home" className="flex items-center gap-1 text-white hover:text-red-400 transition-colors">
+          Home
+        </a>
+        <a href="#projects" className="flex items-center gap-1 text-white hover:text-green-400 transition-colors">
+          Projects
+        </a>
+        <a href="#blog" className="flex items-center gap-1 text-white hover:text-blue-400 transition-colors">
+          Blog
+        </a>
+        <a href="#contact" className="flex items-center gap-1 text-white hover:text-yellow-400 transition-colors">
+          Contact
+        </a>
+        {/* Dark/Light toggle */}
+        <div className="ml-2 flex items-center">
+          <FaMoon className={`text-lg mr-2 ${darkMode ? 'text-gray-400' : 'text-yellow-400'} transition-colors`} />
+          <button
+            aria-label="Toggle dark mode"
+            onClick={() => setDarkMode((d) => !d)}
+            style={{ backgroundColor: darkMode ? colors.primary : colors.background }}
+            className={
+              `relative w-12 h-6 flex items-center rounded-full transition-colors duration-300 focus:outline-none`
+            }
+          >
+            <span
+              className={`absolute left-1 top-1 w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 ${darkMode ? 'translate-x-6' : ''}`}
             />
-            <ProductItem
-              title="Tailwind Master Kit"
-              href="https://tailwindmasterkit.com"
-              src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-              description="Production ready Tailwind css components for your next project"
-            />
-            <ProductItem
-              title="Moonbeam"
-              href="https://gomoonbeam.com"
-              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
-              description="Never write from scratch again. Go from idea to blog in minutes."
-            />
-            <ProductItem
-              title="Rogue"
-              href="https://userogue.com"
-              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-              description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
-            />
-          </div>
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Pricing">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Hobby</HoveredLink>
-            <HoveredLink href="/individual">Individual</HoveredLink>
-            <HoveredLink href="/team">Team</HoveredLink>
-            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
-          </div>
-        </MenuItem>
-      </Menu>
-    </div>
+          </button>
+          <FaSun className={`text-lg ml-2 ${darkMode ? 'text-yellow-400' : 'text-gray-400'} transition-colors`} />
+        </div>
+        {/* Hire Me button */}
+        <a
+          href="#hire-me"
+          className="ml-2 flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-white transition-all shadow-lg"
+          style={{
+            background: `linear-gradient(90deg, ${colors.primary} 0%, ${colors.primary} 50%, ${colors.secondary} 100%)`
+          }}
+        >
+          Hire Me <FaArrowRight className="rotate-45 transition-transform duration-300" />
+        </a>
+      </div>
+    </nav>
   );
 }
+
+export default Navbar;

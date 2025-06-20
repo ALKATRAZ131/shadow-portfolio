@@ -1,12 +1,12 @@
 import { HeroSectionOne } from "@/components/HeroSectionOne";
-import { NavbarDemo } from "@/components/NavbarDemo";
+import Navbar from "@/components/NavbarDemo";
 import { getImageUrl } from "@/helpers";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-      <NavbarDemo />
+      <Navbar />
       <HeroSectionOne />
     </>
   );
