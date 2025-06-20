@@ -3,6 +3,7 @@ import { useIdentity } from "@/hooks/useIdentity";
 import React, { useState } from "react";
 import { FaSun, FaMoon, FaHome, FaProjectDiagram, FaBlog, FaEnvelope, FaArrowRight } from "react-icons/fa";
 import colors from "@/constants/color";
+import GradientBgButton from "./reusables/gradient-bg-button";
 
 
 function Navbar({ className }: { className?: string }) {
@@ -51,15 +52,16 @@ function Navbar({ className }: { className?: string }) {
           <FaSun className={`text-lg ml-2 ${darkMode ? 'text-yellow-400' : 'text-gray-400'} transition-colors`} />
         </div>
         {/* Hire Me button */}
-        <a
-          href="#hire-me"
-          className="ml-2 flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-white transition-all shadow-lg"
+        {/* <button
+          type="button"
+          className="ml-2 flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-white transition-all shadow-2xl relative gradient-shadow-btn"
           style={{
-            background: `linear-gradient(90deg, ${colors.primary} 0%, ${colors.primary} 50%, ${colors.secondary} 100%)`
+            background: `linear-gradient(90deg, ${colors.primary} 0%, ${colors.primary} 60%, ${colors.secondary} 100%)`
           }}
         >
           Hire Me <FaArrowRight className="rotate-45 transition-transform duration-300" />
-        </a>
+        </button> */}
+        <GradientBgButton text="Hire Me" onClick={() => { }} />
       </div>
     </nav>
   );
