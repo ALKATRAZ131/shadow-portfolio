@@ -1,7 +1,6 @@
 import React from "react";
 import { AiOutlineDotNet } from "react-icons/ai";
 import { FaCss3Alt, FaReact, FaHtml5, FaJs, FaNodeJs, FaGitAlt, FaSass, FaPython, FaDatabase } from "react-icons/fa";
-import { GoArrowDownRight } from "react-icons/go";
 
 const skills = [
 	{ name: "CSS", icon: <FaCss3Alt className="text-4xl" />, rating: 8 },
