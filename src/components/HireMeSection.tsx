@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import colors from "@/constants/color";
+import GradientBgButton from "@/components/reusables/gradient-bg-button";
 
 const services = ["Web Development", "UI/UX Design", "Consulting", "SEO Optimization"];
 const budgets = ["< $500", "$500 - $2000", "$2000 - $5000", "> $5000"];
@@ -135,8 +136,6 @@ export default function HireMeSection() {
           id="agree"
           checked={agree}
           onChange={e => setAgree(e.target.checked)}
-          className="w-5 h-5 appearance-none border-2 border-white rounded-md checked:bg-pink-500 checked:border-pink-500 checked:after:content-[''] checked:after:block checked:after:w-3 checked:after:h-3 checked:after:rounded-sm checked:after:bg-black focus:outline-none transition-all duration-200 relative"
-          style={{ boxShadow: '0 0 0 2px #fff' }}
         />
         <label htmlFor="agree" className="text-gray-300 text-base cursor-pointer">
           I agree to the terms and conditions
@@ -144,13 +143,16 @@ export default function HireMeSection() {
       </div>
       {error && <div className="text-red-500 font-semibold mb-2">{error}</div>}
       {success && <div className="text-green-500 font-semibold mb-2">Submitted successfully!</div>}
-      <button
-        type="submit"
-        disabled={submitting}
-        className="mt-2 w-full py-3 rounded-full font-bold text-lg text-white bg-gradient-to-r from-[#D018B7] to-[#430A63] shadow-lg transition-all disabled:opacity-60"
-      >
-        {submitting ? "Submitting..." : "Hire Me"}
-      </button>
+      <div className="w-fit">
+        <GradientBgButton
+          text={submitting ? "Submitting..." : "Hire Me"}
+          onClick={() => {
+            // Simulate form submit button click
+            const form = document.querySelector('form');
+            if (form) form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+          }}
+        />
+      </div>
     </form>
   );
 }
