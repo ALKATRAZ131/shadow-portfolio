@@ -13,13 +13,13 @@ const PROJECTS = {
   "IOS Development": [
     {
       name: "iOS App One",
-      date: "2024-01-10",
+      date: "January 2024",
       image: "https://img.freepik.com/premium-photo/computer-screen-with-word-all-it_1084438-15347.jpg",
       url: "https://apple.com",
     },
     {
       name: "iOS App Two",
-      date: "2024-03-15",
+      date: "March 2024",
       image: "https://img.freepik.com/premium-photo/computer-screen-with-word-all-it_1084438-15347.jpg",
       url: "https://apple.com",
     },
@@ -27,13 +27,13 @@ const PROJECTS = {
   "Website Development": [
     {
       name: "Portfolio Site",
-      date: "2023-11-20",
+      date: "November 2023",
       image: "https://img.freepik.com/premium-photo/computer-screen-with-word-all-it_1084438-15347.jpg",
       url: "https://vercel.com",
     },
     {
       name: "E-Commerce",
-      date: "2024-02-05",
+      date: "February 2024",
       image: "https://img.freepik.com/premium-photo/computer-screen-with-word-all-it_1084438-15347.jpg",
       url: "https://vercel.com",
     },
@@ -41,7 +41,7 @@ const PROJECTS = {
   "Android Development": [
     {
       name: "Android App",
-      date: "2024-04-01",
+      date: "April 2024",
       image: "https://img.freepik.com/premium-photo/computer-screen-with-word-all-it_1084438-15347.jpg",
       url: "https://android.com",
     },
@@ -49,7 +49,7 @@ const PROJECTS = {
   "Backend Development": [
     {
       name: "API Server",
-      date: "2024-05-10",
+      date: "May 2024",
       image: "https://img.freepik.com/premium-photo/computer-screen-with-word-all-it_1084438-15347.jpg",
       url: "https://nodejs.org",
     },
@@ -57,7 +57,7 @@ const PROJECTS = {
   "Webflow Development": [
     {
       name: "Webflow Landing",
-      date: "2024-06-01",
+      date: "June 2024",
       image: "https://img.freepik.com/premium-photo/computer-screen-with-word-all-it_1084438-15347.jpg",
       url: "https://webflow.com",
     },
@@ -71,35 +71,37 @@ export default function MyProjectsSection() {
   const projects = PROJECTS[selectedTab] || [];
 
   return (
-    <section className="w-full py-16 bg-black">
+    <section className="w-full py-16 bg-black mt-16">
       <h2 className="text-7xl font-extrabold text-white text-center mb-12">
         My Projects
       </h2>
       {/* Tabs */}
-      <div className="w-full max-w-5xl mx-auto">
-        <div className="border-t border-b border-gray-700 flex flex-wrap">
-          {TABS.map((tab) => (
-            <button
-              key={tab}
-              className={`flex-1 min-w-[180px] px-4 py-4 text-lg font-semibold text-center border-x-0 border-t border-b border-gray-700 transition-colors duration-200
-                ${
-                  selectedTab === tab
-                    ? "text-[#D018B7] bg-black"
-                    : "text-gray-300 bg-black hover:text-white"
-                }
-              `}
-              style={{
-                borderTopWidth: 1,
-                borderBottomWidth: 1,
-                borderLeftWidth: 0,
-                borderRightWidth: 0,
-                borderStyle: "solid",
-              }}
-              onClick={() => setSelectedTab(tab as keyof typeof PROJECTS)}
-            >
-              {tab}
-            </button>
-          ))}
+      <div className="w-full mx-auto py-12">
+        <div className="border-t border-b border-gray-700 w-full">
+          <div className="w-[80%] mx-auto flex flex-wrap">
+            {TABS.map((tab) => (
+              <button
+                key={tab}
+                className={`flex-1 min-w-[180px] px-12 py-6 text-lg font-semibold text-center transition-colors duration-500
+                  ${
+                    selectedTab === tab
+                      ? "text-white bg-gradient-to-r from-[#D018B7] to-[#430A63] hover:text-white"
+                      : "text-gray-300 bg-black hover:text-white border border-gray-700"
+                  }
+                `}
+                style={{
+                  borderTopWidth: 1,
+                  borderBottomWidth: 1,
+                  borderLeftWidth: 1,
+                  borderRightWidth: 1,
+                  borderStyle: "solid",
+                }}
+                onClick={() => setSelectedTab(tab as keyof typeof PROJECTS)}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
       {/* Projects Grid */}
@@ -123,7 +125,7 @@ export default function MyProjectsSection() {
                   <img
                     src={project.image}
                     alt={project.name}
-                    className="w-full h-full object-cover rounded-full transition-all duration-300 group-hover:brightness-100 group-hover:opacity-100"
+                    className="w-full h-full object-cover rounded-full transition-all duration-300 opacity-40 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center transition-all duration-300 group-hover:bg-opacity-0">
                     <span className="text-white text-xl font-bold text-center px-2">

@@ -58,7 +58,7 @@ export default function MySkillsSection() {
 									</div>
 								</div>
 							</div>
-							{rowIdx < 4 && (
+							{rowIdx < 5 && (
 								<div className="w-full flex justify-center">
 									<div className="w-[100%] border-b border-gray-700" />
 								</div>
